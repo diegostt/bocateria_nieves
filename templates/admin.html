@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin - Pedidos</title>
+</head>
+<body>
+  <h2>Panel de pedidos — Bocatería Nieves</h2>
+  <p>Acceso mediante ?key=TU_CLAVE en la URL</p>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr><th>ID</th><th>Nombre</th><th>Tel</th><th>Items</th><th>Total</th><th>Estado</th><th>Creado</th><th>Acción</th></tr>
+    </thead>
+    <tbody>
+      {% for p in pedidos %}
+      <tr>
+        <td>{{ p['id'] }}</td>
+        <td>{{ p['nombre'] }}</td>
+        <td>{{ p['telefono'] }}</td>
+        <td><pre style="white-space: pre-wrap">{{ p['items'] }}</pre></td>
+        <td>{{ p['total'] }}€</td>
+        <td>{{ p['estado'] }}</td>
+        <td>{{ p['creado'] }}</td>
+        <td>
+          <form method="post" action="/admin/update" style="display:inline">
+            <input type="hidden" name="key" value="{{ request.args.get('key') }}">
+            <input type="hidden" name="id" value="{{ p['id'] }}">
+            <select name="estado">
+              <option>nuevo</option>
+              <option>en preparación</option>
+              <option>listo</option>
+              <option>entregado</option>
+            </select>
+            <button>Actualizar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

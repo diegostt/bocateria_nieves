@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pedir - Bocatería Nieves</title>
+</head>
+<body>
+  <h2>Hacé tu pedido - Bocatería Nieves</h2>
+  <form action="/pedir" method="post">
+    Nombre: <input name="nombre" required><br>
+    Teléfono: <input name="telefono"><br>
+    Dirección (opcional): <input name="direccion"><br>
+    Items (ej: 1xBocata de jamón, 2xCoca):<br>
+    <textarea name="items" required rows="4" cols="40"></textarea><br>
+    Total (€): <input name="total" type="number" step="0.01" required><br>
+    <button>Enviar pedido</button>
+  </form>
+</body>
+</html>
